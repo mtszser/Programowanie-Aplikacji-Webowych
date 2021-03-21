@@ -1,0 +1,42 @@
+body {
+    background-color: lightblue;
+    height: auto;
+    width: auto;
+}
+
+.inputContainer {
+    height: auto;
+    width: auto;
+    margin: auto;
+    background-color: White;
+}
+
+.input {
+    display: block;
+    margin: auto;
+    text-align: center;
+    align-items: center;
+    margin-bottom: 15px;
+    background-color: wheat;
+}
+
+.input p {
+    font-size: 18px;
+}
+
+.user-input {
+    display: block;
+    margin: auto;
+    align-items: center;
+    text-align: center;
+
+}
+.user-output {
+    display: block;
+    orientation: Horizontal;
+    text-align: center;
+    margin: auto;
+}
+
+
+

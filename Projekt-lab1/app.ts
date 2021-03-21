@@ -1,4 +1,12 @@
+function userInput() {
+    var inputNumber = document.getElementById('howManyInputs');
+}
+for(var i=0; i< inputNumber)
+
+
 class MyCalc{
+
+    howManyInputs: HTMLInputElement;
     input1: HTMLInputElement;
     input2: HTMLInputElement;
     input3: HTMLInputElement;
@@ -54,5 +62,5 @@ class MyCalc{
         this.minOutput.value = min.toString();
         this.maxOutput.value = min.toString();
     }
-} 
+}  
 const myCalc = new MyCalc();

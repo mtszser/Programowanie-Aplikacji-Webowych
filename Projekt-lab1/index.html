@@ -7,18 +7,27 @@
     <title>Projekt lab1</title>
 </head>
 <body>
-    <div class="user-input">
-        <input type="text" id="input1">
-        <input type="text" id="input2">
-        <input type="text" id="input3">
-        <input type="text" id="input4">
-    </div>
-    <div class="user-output">
-        <input type="text" id="sum">
-        <input type="text" id="avg">
-        <input type="text" id="min">
-        <input type="text" id="max">
+    <div class="inputContainer">
+        <div class="input">
+            <p>Please choose how many user inputs do you want:</p>
+            <input type="number" id="howManyInputs">
+        </div>
+            <div class="user-input">
+                <p>Write your number:</p>
+                <input type="text" id="userInput">
+            </div>
+                <div class="user-output">
+                    <p>Sum:</p>
+                    <input type="text" id="sum">
+                    <p>Avg:</p>
+                    <input type="text" id="avg">
+                    <p>Min:</p>
+                    <input type="text" id="min">
+                    <p>Max:</p>
+                    <input type="text" id="max">
+                </div>
     </div>
     <script src="./dist/app.js"></script>
+    <link rel="stylesheet" href="app.css">
 </body>
 </html>

@@ -4,33 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projekt lab1</title>
+    <title>Nauka dla opornych z jsa</title>
 </head>
-<body>
-    <div class="inputContainer">
-        <div class="input">
-            <p>Please choose how many user inputs do you want:</p>
-            <input type="number" id="howManyInputs">
-        </div>
-            <div class="user-input">
-                <p>Write your number:</p>
-                <input type="text" id="userInput1">
-                <input type="text" id="userInput2">
-                <input type="text" id="userInput3">
-                <input type="text" id="userInput4">
-            </div>
-                <div class="user-output">
-                    <p>Sum:</p>
-                    <input type="text" id="sum">
-                    <p>Avg:</p>
-                    <input type="text" id="avg">
-                    <p>Min:</p>
-                    <input type="text" id="min">
-                    <p>Max:</p>
-                    <input type="text" id="max">
-                </div>
+<body class="mainBody">
+    <div class="inputAdder">
+        <p> How many inputs do you want to have?</p>
+        <input type="number" id="addInput" min="0">
     </div>
-    <script src="app.js"></script>
-    <link rel="stylesheet" href="app.css">
+    <div class="inputContainer">
+
+    </div>
+    </div>
+    <div class="outputContainer">
+        <p>Sum:</p>
+        <input type="number" id="sum">
+        <p>Average:</p>
+        <input type="number" id="avg">
+        <p>Minimum:</p>
+        <input type="number" id="min">
+        <p>Maximum:</p>
+        <input type="number" id="max">
+    </div>
 </body>
+<script src="app.js"></script>
+<link rel="stylesheet" href="styles.css">
 </html>

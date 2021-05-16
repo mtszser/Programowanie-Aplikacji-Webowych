@@ -1,65 +1,87 @@
-class MyCalc{
+class MyCalc {
+        
+    howManyInputs = document.getElementById("#addInput")! as HTMLInputElement;
+    inputContainer: HTMLDivElement;
+    inputArray: HTMLInputElement[] = [];
+    userInput: Number;
+    input: HTMLInputElement;
+    sum: HTMLInputElement;
+    avg: HTMLInputElement;
+    min: HTMLInputElement;
+    max: HTMLInputElement;
 
-    howManyInputs: HTMLInputElement;
-    input1: HTMLInputElement;
-    input2: HTMLInputElement;
-    input3: HTMLInputElement;
-    input4: HTMLInputElement;
 
-    sumOutput: HTMLInputElement;
-    avgOutput: HTMLInputElement;
-    minOutput: HTMLInputElement;
-    maxOutput: HTMLInputElement;
     
+
     constructor() {
-        this.startCalc();
-    }
-    startCalc(){
-        this.getUserInput();
-        this.getInputValues();
+        this.startApp();
     }
 
-    getUserInput(){
-        this.howManyInputs = document.querySelector('#howManyInputs')
-        this.input1 = document.querySelector('#userInput1');
-        this.input2 = document.querySelector('#userInput2');
-        this.input3 = document.querySelector('#userInput3');
-        this.input4 = document.querySelector('#userInput4');
-        this.sumOutput = document.querySelector('#sum')
-        this.avgOutput = document.querySelector('#avg')
-        this.minOutput = document.querySelector('#min')
-        this.maxOutput = document.querySelector('#max')
+    startApp() {
+        this.getOutputs();
+        this.createInputs();
     }
 
 
-    getInputValues(){
-
-        this.input1.addEventListener('input', () => this.computeData());
-        this.input2.addEventListener('input', () => this.computeData());
-        this.input3.addEventListener('input', () => this.computeData());
-        this.input4.addEventListener('input', () => this.computeData());
+    getOutputs() {
+        this.sum = document.querySelector("#sum");
+        this.avg = document.querySelector("#avg");
+        this.min = document.querySelector("#min");
+        this.max = document.querySelector("#max");
     }
+    createInputs(){
+        this.inputContainer = <HTMLDivElement>document.querySelector(".inputContainer");
+        this.input = <HTMLInputElement>document.getElementById("addInput")
 
+
+        this.input.addEventListener("blur", () => {
+            const howmuch = +this.input.value;
+            this.inputContainer.innerHTML = "";
+            this.inputArray = [];
+
+            for (let i = 0; i < howmuch; i++) {
+                const input = document.createElement("input");
+                input.id = `input${i}`;
+                input.className = "data"
+                input.type = "number";
+                this.inputContainer.appendChild(input);
+                this.inputArray.push(input);
+                console.log(this.inputContainer)
+                input.addEventListener("input", () => this.computeData());
+            }
+        })
+
+
+    }
 
     computeData() {
-        const input1 = +this.input1.value;
-        const input2 = +this.input2.value;
-        const input3 = +this.input3.value;
-        const input4 = +this.input4.value;
+        const values = this.inputArray.filter((el) => el.value.length > 0).map((el) => +el.value);
+        if (values.length > 0) {
+            const sum = values.reduce((a, b) => a + b, 0);
+            const avg = sum / values.length;
+            const min = Math.min(...values);
+            const max = Math.max(...values);
 
-        const sum = input1 + input2 + input3 + input4;
-        const avg = sum/4;
-        const min = Math.min(input1, input2, input3, input4);
-        const max = Math.max(input1, input2, input3, input4);
+            this.showOutput(sum, avg, min, max);
+        } else {
+            this.showOutput(0 , 0 , 0 , 0);
+        }
+        
+    }
 
-        this.showStats(sum, avg, min, max);
+    showOutput(sum: number, avg: number, min: number, max: number) {
+        this.sum.value = sum.toString();
+        this.avg.value = avg.toString();
+        this.min.value = min.toString();
+        this.max.value = max.toString();
 
     }
-    showStats(sum: number, avg: number, min: number, max: number) {
-        this.sumOutput.value = sum.toString();
-        this.avgOutput.value = avg.toString();
-        this.minOutput.value = min.toString();
-        this.maxOutput.value = max.toString();
-    }
-}  
+
+}
 const myCalc = new MyCalc();
+
+
+
+
+
+

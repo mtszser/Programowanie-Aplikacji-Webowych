@@ -1,0 +1,71 @@
+@import url(https://fonts.googleapis.com/css?family=Handlee|Pacifico);
+body {
+  background: #F9F9F9;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.drumHeader {
+  display: block;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+.drumHeader h1 {
+  margin-top: 30px;
+  font-size: 60px;
+  color: #cb2026;
+  text-shadow: 1px 1px 1px #5a0b0d;
+  font-family: Handlee;
+}
+.drumHeader img {
+  width: 550px;
+}
+
+.drumConsole {
+  width: 500px;
+  height: 350px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  box-shadow: rgba(50, 53, 93, 0.308) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.drumConsole_grid {
+  height: 300px;
+  width: 400px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  padding: 25px;
+  gap: 30px;
+  border-radius: 30px;
+}
+
+.button {
+  color: #6d6d6d;
+  font-size: 30px;
+  background-color: #f4f4f4;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.button:hover {
+  transition: linear 0.3s;
+  font-size: 35px;
+  color: black;
+  box-shadow: 0px 0px 4px 2px black;
+  -webkit-box-shadow: 0px 0px 4px 2px black;
+  -moz-box-shadow: 0px 0px 4px 2px black;
+}

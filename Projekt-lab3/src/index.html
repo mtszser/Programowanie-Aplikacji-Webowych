@@ -8,12 +8,17 @@
   <body>
       <header>
         <span>Podaj Miasto:</span>
-          <input type="text">
+          <input type="text" id="city">
           <button id="showBtn">Pokaz pogode</button>
         </div> 
       </header>
       <main>
-        <div class="weatherPanel"></div>
+        <div class="weatherPanelWrapper">
+          <div class="weatherPanel">
+            <p class="cityName">City Name:</p>
+            <p class="cityTemp">City Temp:</p>
+          </div>
+        </div>
       </main>
     <script src="index.js"></script>
   </body>

@@ -1,0 +1,30 @@
+body {
+  background: lightblue;
+}
+
+header {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.weatherPanelWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  width: 100%;
+  height: 100px;
+}
+
+.weatherPanel {
+  text-align: center;
+  justify-content: center;
+  width: 20%;
+  height: auto;
+  font-size: 20px;
+  color: black;
+  background-color: white
+}

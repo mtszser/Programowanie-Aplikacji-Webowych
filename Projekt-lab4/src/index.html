@@ -3,20 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pogodynka</title>
+    <title>Note App</title>
   </head>
   <body>
       <header>
-        <span>Podaj Miasto:</span>
-          <input type="text" id="city">
-          <button id="showBtn">Pokaz pogode</button>
+        <span>Write new Note</span>
+          <input type="text" id="noteTitle" placeholder="Title..">
+          <input type="text" id="noteInfo" placeholder="Info..">
+          <button id="showBtn">Add Notes</button>
         </div> 
       </header>
       <main>
-        <div class="weatherPanelWrapper">
-          <div class="weatherPanel">
-            <p class="cityName">City Name:</p>
-            <p class="cityTemp">City Temp:</p>
+        <div class="notePanelWrapper">
+          <div class="notePanel">
+            <div class="noteBox">
+              <h1 class="noteTitle">Note-1</h1>
+            </div>
           </div>
         </div>
       </main>

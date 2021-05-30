@@ -40,53 +40,49 @@ exports.App = void 0;
 var App = /** @class */ (function () {
     function App() {
         this.opwApiKey = '2143d0a80d3b223e32953639018a12c4';
-        this.getCityInfo('zakopane');
+        this.getCityName();
     }
-    App.prototype.getCityInfo = function (city) {
+    App.prototype.getCityName = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var weather;
+            var _this = this;
             return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.getWeather('zakopane')];
-                    case 1:
-                        weather = _a.sent();
-                        this.saveData(weather);
-                        return [2 /*return*/];
-                }
+                this.cityName = document.getElementById("city");
+                this.showBtn = document.getElementById("showBtn");
+                this.showBtn.addEventListener("click", function () { return _this.getCityInfo(_this.opwApiKey); });
+                return [2 /*return*/];
             });
         });
     };
-    App.prototype.getWeather = function (city) {
+    App.prototype.getCityInfo = function (opwApiKey) {
         return __awaiter(this, void 0, Promise, function () {
-            var openWeatherUrl, weatherResponse, weatherData;
+            var cityName, openWeatherApi, weatherResponse, weatherData;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        openWeatherUrl = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=" + this.opwApiKey;
-                        return [4 /*yield*/, fetch(openWeatherUrl)];
+                        cityName = this.cityName.value;
+                        console.log(cityName);
+                        openWeatherApi = "http://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&APPID=" + opwApiKey;
+                        return [4 /*yield*/, fetch(openWeatherApi)];
                     case 1:
                         weatherResponse = _a.sent();
                         return [4 /*yield*/, weatherResponse.json()];
                     case 2:
                         weatherData = _a.sent();
+                        this.createElement(weatherData);
                         console.log(weatherData);
                         return [2 /*return*/, weatherData];
                 }
             });
         });
     };
-    App.prototype.saveData = function (data) {
-        localStorage.setItem('weatherData', JSON.stringify(data));
-    };
-    App.prototype.getData = function () {
-        var data = localStorage.getItem('weatherData');
-        if (data) {
-            return JSON.parse(data);
-        }
-        else {
-            return {};
-        }
+    App.prototype.createElement = function (weatherData) {
+        var weather = {
+            cityName: String = weatherData.name,
+            cityTemp: Number = weatherData.main.temp
+        };
+        console.log(weather);
     };
     return App;
 }());
 exports.App = App;
+var app = new App();

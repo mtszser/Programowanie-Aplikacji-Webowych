@@ -1,69 +1,42 @@
 export class App {
 
-    cityName: HTMLInputElement;
-    showBtn: HTMLButtonElement;
-    opwApiKey: string = '2143d0a80d3b223e32953639018a12c4';
+    titleInput: string;
+    textInput: string;
+    submitBtn: HTMLButtonElement;
+    pinnedBox: HTMLDivElement;
+    othersBox: HTMLDivElement;
+    
+
 
     constructor() {
-        this.getCityName();
+        this.startNoteApp();
     }
 
-    async getCityName() {
-        this.cityName = <HTMLInputElement>document.getElementById("city");
-        this.showBtn = <HTMLButtonElement>document.getElementById("showBtn");
-        this.showBtn.addEventListener("click", () => this.getCityInfo(this.opwApiKey));
-        
-    }    
+    startNoteApp(){
+        this.getElements();
+        this.btnEvent();
 
-    async getCityInfo(opwApiKey: string,): Promise<any> {
-        const cityName = this.cityName.value;
-        console.log(cityName);
-        const openWeatherApi = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&APPID=${opwApiKey}`
-        const weatherResponse = await fetch(openWeatherApi);
-        const weatherData = await weatherResponse.json();
-        this.createElement(weatherData)
-        console.log(weatherData);
-        return weatherData;
+    }
+
+    getElements() {
+        this.pinnedBox = document.getElementById("pinnedBox") as HTMLDivElement;
+        this.othersBox = document.getElementById("othersBox") as HTMLDivElement;
+        this.submitBtn = document.getElementById("submitBtn") as HTMLButtonElement;
+        this.titleInput = (<HTMLInputElement>document.getElementById("noteTitle")).value;
+        this.textInput = (<HTMLTextAreaElement>document.getElementById("noteText")).value;
         
     }
-    
-    createElement(weatherData: any) {
-        var weather: any = {
-            cityName: String = weatherData.name,
-            cityTemp: Number = weatherData.main.temp
-        }  
-        console.log(weather);
+
+    btnEvent() {
+        this.submitBtn.addEventListener("click", () => this.addNote())
+    }
+
+    addNote() {
+        console.log(this.titleInput = (<HTMLInputElement>document.getElementById("noteTitle")).value);
+        console.log(this.textInput = (<HTMLTextAreaElement>document.getElementById("noteText")).value);
+
     }
 
 
-
-
-
-
-    // constructor() {
-    //     this.getCityInfo('zakopane')
-    // }
-    // async getCityInfo(zakopane: string) {
-    //     const weather = await this.getWeather('zakopane');
-    //     this.saveData(weather);
-    // }
-    // async getWeather(zakopane: string): Promise<any> {
-    //     const openWeatherUrl = `http://api.openweathermap.org/data/2.5/weather?q=${zakopane}&APPID=${this.opwApiKey}`;
-    //     const weatherResponse = await fetch(openWeatherUrl);
-    //     const weatherData = await weatherResponse.json();
-    //     console.log(weatherData);
-    //     return weatherData;
-    // }
-    // saveData(data: any) {
-    //     localStorage.setItem('weatherData', JSON.stringify(data));
-    // }
-    // getData() {
-    //     const data = localStorage.getItem('weatherData');
-    //     if (data) {
-    //         return JSON.parse(data);
-    //     } else {
-    //         return {};
-    //     }
-    // }
 }
 const app = new App();

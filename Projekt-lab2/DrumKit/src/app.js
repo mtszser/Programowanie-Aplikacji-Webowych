@@ -12,11 +12,11 @@ var App = /** @class */ (function () {
         window.addEventListener('keydown', this.onKeyDown);
     };
     App.prototype.getButton = function () {
-        this.oty = document.querySelector("#oty");
+        this.koszmar = document.querySelector("#koszmar");
         this.diabel = document.querySelector("#diabel");
-        this.mamma = document.querySelector("#mamma");
-        this.dupa = document.querySelector("#dupa");
-        this.sergio = document.querySelector("#sergio");
+        this.pierwszerazy = document.querySelector("#pierwszerazy");
+        this.obrzydliwe = document.querySelector("#obrzydliwe");
+        this.oscypek = document.querySelector("#oscypek");
         this.zdrowie = document.querySelector("#zdrowie");
         this.qBtn = document.querySelector("#q-Btn");
         this.wBtn = document.querySelector("#w-Btn");
@@ -24,7 +24,7 @@ var App = /** @class */ (function () {
         this.rBtn = document.querySelector("#r-Btn");
         this.tBtn = document.querySelector("#t-Btn");
         this.yBtn = document.querySelector("#y-Btn");
-        console.log(this.diabel, this.oty, this.clap);
+        console.log(this.diabel);
     };
     App.prototype.onKeyDown = function (ev) {
         var key = ev.key;
@@ -33,19 +33,19 @@ var App = /** @class */ (function () {
     App.prototype.play = function (key) {
         switch (key) {
             case 'q':
-                this.diabel.play();
+                this.obrzydliwe.play();
                 break;
             case 'w':
-                this.oty.play();
+                this.pierwszerazy.play();
                 break;
             case 'e':
-                this.mamma.play();
+                this.koszmar.play();
                 break;
             case 'r':
-                this.dupa.play();
+                this.oscypek.play();
                 break;
             case 't':
-                this.sergio.play();
+                this.diabel.play();
                 break;
             case 'y':
                 this.zdrowie.play();
@@ -54,11 +54,11 @@ var App = /** @class */ (function () {
     };
     App.prototype.addEventToButtons = function () {
         var _this = this;
-        this.qBtn.addEventListener("click", function () { return _this.diabel.play(); });
-        this.wBtn.addEventListener("click", function () { return _this.oty.play(); });
-        this.eBtn.addEventListener("click", function () { return _this.mamma.play(); });
-        this.rBtn.addEventListener("click", function () { return _this.dupa.play(); });
-        this.tBtn.addEventListener("click", function () { return _this.sergio.play(); });
+        this.qBtn.addEventListener("click", function () { return _this.obrzydliwe.play(); });
+        this.wBtn.addEventListener("click", function () { return _this.pierwszerazy.play(); });
+        this.eBtn.addEventListener("click", function () { return _this.koszmar.play(); });
+        this.rBtn.addEventListener("click", function () { return _this.oscypek.play(); });
+        this.tBtn.addEventListener("click", function () { return _this.diabel.play(); });
         this.yBtn.addEventListener("click", function () { return _this.zdrowie.play(); });
     };
     return App;

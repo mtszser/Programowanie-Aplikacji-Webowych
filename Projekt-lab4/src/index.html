@@ -6,18 +6,27 @@
     <title>Note App</title>
   </head>
   <body>
-      <header>
-        <span>Write new Note</span>
-          <input type="text" id="noteTitle" placeholder="Title..">
-          <input type="text" id="noteInfo" placeholder="Info..">
-          <button id="showBtn">Add Notes</button>
+    <div class="Wrapper">
+        <div class="inputContainer">
+          <input type="text" id="noteTitle" placeholder="Tytuł.."></input>
+          <textarea type="text" id="noteText" placeholder="Tekst.."></textarea>
+          <button id="submitBtn">Utwórz notatkę</button>
         </div> 
-      </header>
+      </div>
       <main>
         <div class="notePanelWrapper">
           <div class="notePanel">
-            <div class="noteBox">
-              <h1 class="noteTitle">Note-1</h1>
+            <div class="pinnedBox">
+              <div>
+                <h1>Przypięte:</h1>
+              </div>
+
+              </div>
+              <div class="othersBox">
+                <div>
+              <h1>Inne:</h1>
+            </div>
+
             </div>
           </div>
         </div>

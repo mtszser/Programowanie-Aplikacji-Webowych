@@ -49,6 +49,7 @@ var App = /** @class */ (function () {
             return __generator(this, function (_a) {
                 this.cityName = document.getElementById("city");
                 this.showBtn = document.getElementById("showBtn");
+                this.weatherContainer = document.getElementById("mainElement");
                 this.showBtn.addEventListener("click", function () { return _this.getCityInfo(_this.opwApiKey); });
                 return [2 /*return*/];
             });
@@ -79,14 +80,35 @@ var App = /** @class */ (function () {
     App.prototype.createElement = function (weatherData, cityName) {
         var kelwin = weatherData.main.temp;
         var celcjusz = kelwin - 273.15;
+        var opis = weatherData.weather[0].icon;
+        console.log(opis);
         var mainDiv = document.createElement("div");
         mainDiv.id = "mainDiv";
         mainDiv.textContent = "Pogoda w " + cityName + ":";
         var cityDiv = document.createElement("div");
         cityDiv.id = "cityDiv";
-        cityDiv.textContent = "Temperatura wynosi: " + celcjusz.toFixed(2) + "°C" + " Kraj: " + weatherData.sys.country + " Prędkość: " + weatherData.wind.speed + "km/h";
+        cityDiv.textContent = "Temperature: " + celcjusz.toFixed(2) + "°C" + " Country: " + weatherData.sys.country + " Wind: " + weatherData.wind.speed + "km/h" + " Weather: " + weatherData.weather[0].description;
+        var temperatureIcon = document.createElement("img");
+        temperatureIcon.setAttribute("src", "http://openweathermap.org/img/wn/" + opis + "@2x.png");
+        temperatureIcon.setAttribute("width", "100");
+        temperatureIcon.setAttribute("height", "100");
+        temperatureIcon.setAttribute("alt", "icons");
+        cityDiv.appendChild(temperatureIcon);
         mainDiv.appendChild(cityDiv);
         document.body.appendChild(mainDiv);
+        this.saveData(weatherData);
+    };
+    App.prototype.saveData = function (data) {
+        localStorage.setItem('weatherData,', JSON.stringify(data));
+    };
+    App.prototype.getData = function () {
+        var data = localStorage.getItem('weatherData');
+        if (data) {
+            return JSON.parse(data);
+        }
+        else {
+            return [];
+        }
     };
     return App;
 }());

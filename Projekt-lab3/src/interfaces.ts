@@ -11,10 +11,16 @@ export interface IWeatherData {
         speed: number,
     },
     sys: {
-    type: number,
+        type: number,
         id: number,
-            country: string,
-                sunrise: number,
-                    sunset: number
-},
+        country: string,
+        sunrise: number,
+        sunset: number
+    },
+    weather: [
+        {
+            description: string,
+            icon: string
+        },
+    ]
 };

@@ -16,6 +16,7 @@ export class App {
     async getCityName() {
         this.cityName = <HTMLInputElement>document.getElementById("city");
         this.showBtn = <HTMLButtonElement>document.getElementById("showBtn");
+        this.weatherContainer = <HTMLDivElement>document.getElementById("mainElement");
         this.showBtn.addEventListener("click", () => this.getCityInfo(this.opwApiKey));
         
     }    
@@ -33,20 +34,46 @@ export class App {
     }
 
     createElement(weatherData: IWeatherData, cityName: string) {
+        
 
         const kelwin = weatherData.main.temp;
         const celcjusz = kelwin - 273.15;
+
+        const opis = weatherData.weather[0].icon;
+        console.log(opis);
 
         const mainDiv: HTMLDivElement = document.createElement("div");
         mainDiv.id = "mainDiv"
         mainDiv.textContent = "Pogoda w " + cityName + ":";
         const cityDiv: HTMLDivElement = document.createElement("div");
         cityDiv.id = "cityDiv"
-        cityDiv.textContent = "Temperatura wynosi: " + celcjusz.toFixed(2) + "°C" + " Kraj: " + weatherData.sys.country + " Prędkość: " + weatherData.wind.speed + "km/h";
+        cityDiv.textContent = "Temperature: " + celcjusz.toFixed(2) + "°C" + " Country: " + weatherData.sys.country + " Wind: " + weatherData.wind.speed + "km/h" + " Weather: " + weatherData.weather[0].description;
+        const temperatureIcon: HTMLImageElement = document.createElement("img")
+        temperatureIcon.setAttribute("src", `http://openweathermap.org/img/wn/${opis}@2x.png`);
+        temperatureIcon.setAttribute("width", "100");
+        temperatureIcon.setAttribute("height", "100");
+        temperatureIcon.setAttribute("alt", "icons");
+        cityDiv.appendChild(temperatureIcon);
         mainDiv.appendChild(cityDiv);
         document.body.appendChild(mainDiv);
-        
+        this.saveData(weatherData);
     }
+
+    saveData(data: any) {
+        localStorage.setItem('weatherData,', JSON.stringify(data));
+
+    }
+
+    getData() {
+        const data = localStorage.getItem('weatherData');
+        if(data) {
+            return JSON.parse(data);
+        }
+        else {
+            return [];
+        }
+    }
+    
     
 
 

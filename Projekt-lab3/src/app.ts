@@ -4,7 +4,6 @@ export class App {
     clearBtn: HTMLButtonElement;
     showBtn: HTMLButtonElement;
     opwApiKey: string = '2143d0a80d3b223e32953639018a12c4';
-    weatherContainer: HTMLDivElement;
     weatherList: HTMLDivElement;
     cityCompare: string[] = [];
     cityList: string[] = [];
@@ -28,7 +27,6 @@ export class App {
         this.showBtn = <HTMLButtonElement>document.getElementById("showBtn");
         this.clearBtn = <HTMLButtonElement>document.getElementById("clearBtn");
         this.clearBtn.addEventListener("click", () => this.clearStorage())
-        this.weatherContainer = <HTMLDivElement>document.getElementById("mainElement");
         this.weatherList = <HTMLDivElement>document.createElement("div");
         
         
@@ -64,7 +62,7 @@ export class App {
             mainDiv.textContent = "Pogoda w " + cityName + ":";
             const cityDiv: HTMLDivElement = document.createElement("div");
             cityDiv.id = "cityDiv"
-            cityDiv.textContent = "Temperature: " + celcjusz.toFixed(2) + "°C" + " Country: " + data.sys.country + " Wind: " + data.wind.speed + "km/h" + " Weather: " + data.weather[0].description;
+            cityDiv.textContent = "Temperature: " + celcjusz.toFixed(0) + "°C" + " Country: " + data.sys.country + " Wind: " + data.wind.speed + "km/h" + " Weather: " + data.weather[0].description;
             const temperatureIcon: HTMLImageElement = document.createElement("img")
             temperatureIcon.setAttribute("src", `http://openweathermap.org/img/wn/${opis}@2x.png`);
             temperatureIcon.setAttribute("width", "100");
@@ -72,7 +70,8 @@ export class App {
             temperatureIcon.setAttribute("alt", "icons");
             cityDiv.appendChild(temperatureIcon);
         mainDiv.appendChild(cityDiv);
-        document.body.appendChild(mainDiv);
+        weatherList.append(mainDiv);
+        document.body.appendChild(weatherList);
         this.cityList.push(data.name)
         }) 
     }

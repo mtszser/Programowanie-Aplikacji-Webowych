@@ -1,7 +1,9 @@
 body {
+  display: flex;
+  flex-direction: column;
   background: lightblue;
   width: auto;
-  height: 350px;
+  height: auto;
 }
 
 header {
@@ -9,24 +11,24 @@ header {
   width: 100%;
   align-items: center;
   justify-content: center;
-  gap: 15px;
+  gap: 10px;
 }
 
 #weatherList {
   display: flex;
+  flex-direction: row;
   text-align: center;
   justify-content: center;
   align-items: center;
-  height: 200px;
+  height: auto;
 }
 
-.weatherPanel {
+#mainWeather {
   display: flex;
   text-align: center;
   justify-content: center;
-  width: 20%;
-  height: 300px;
-  font-size: 20px;
+  width: auto;
+  height: auto;
 }
 
 .weatherContainer {
@@ -55,12 +57,4 @@ header {
   height: 100px;
   width: 50%;
   margin-top: 10px;
-}
-
-#mainElement {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  text-align: center;
-  height: 400px;
 }

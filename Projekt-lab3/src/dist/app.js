@@ -70,7 +70,6 @@ var App = /** @class */ (function () {
                 this.showBtn = document.getElementById("showBtn");
                 this.clearBtn = document.getElementById("clearBtn");
                 this.clearBtn.addEventListener("click", function () { return _this.clearStorage(); });
-                this.weatherContainer = document.getElementById("mainElement");
                 this.weatherList = document.createElement("div");
                 return [2 /*return*/];
             });
@@ -116,7 +115,7 @@ var App = /** @class */ (function () {
             mainDiv.textContent = "Pogoda w " + cityName + ":";
             var cityDiv = document.createElement("div");
             cityDiv.id = "cityDiv";
-            cityDiv.textContent = "Temperature: " + celcjusz.toFixed(2) + "°C" + " Country: " + data.sys.country + " Wind: " + data.wind.speed + "km/h" + " Weather: " + data.weather[0].description;
+            cityDiv.textContent = "Temperature: " + celcjusz.toFixed(0) + "°C" + " Country: " + data.sys.country + " Wind: " + data.wind.speed + "km/h" + " Weather: " + data.weather[0].description;
             var temperatureIcon = document.createElement("img");
             temperatureIcon.setAttribute("src", "http://openweathermap.org/img/wn/" + opis + "@2x.png");
             temperatureIcon.setAttribute("width", "100");
@@ -124,7 +123,8 @@ var App = /** @class */ (function () {
             temperatureIcon.setAttribute("alt", "icons");
             cityDiv.appendChild(temperatureIcon);
             mainDiv.appendChild(cityDiv);
-            document.body.appendChild(mainDiv);
+            weatherList.append(mainDiv);
+            document.body.appendChild(weatherList);
             _this.cityList.push(data.name);
         });
     };

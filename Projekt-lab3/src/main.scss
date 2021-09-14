@@ -1,5 +1,7 @@
 body {
   background: lightblue;
+  width: auto;
+  height: 350px;
 
 }
 
@@ -11,7 +13,13 @@ header {
   gap: 15px;
 }
 
-
+#weatherList {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
 
 .weatherPanel {
   display: flex;
@@ -24,6 +32,7 @@ header {
 
 .weatherContainer {
   display: flex;
+  flex-direction: row;
   text-align: center;
   width: 80%;
   height: 200px;
@@ -36,7 +45,8 @@ header {
   text-align: center;
   align-items: center;
   height: 200px;
-  width: 300px;
+  width: 350px;
+  padding: 5px;
 }
 
 #cityDiv {

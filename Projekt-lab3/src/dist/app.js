@@ -35,71 +35,102 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __spreadArrays = (this && this.__spreadArrays) || function () {
+    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+    for (var r = Array(s), k = 0, i = 0; i < il; i++)
+        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+            r[k] = a[j];
+    return r;
+};
 exports.__esModule = true;
 exports.App = void 0;
 var App = /** @class */ (function () {
     function App() {
+        var _this = this;
         this.opwApiKey = '2143d0a80d3b223e32953639018a12c4';
+        this.cityCompare = [];
+        this.cityList = [];
         this.getCityName();
-        this.getCityInfo(this.opwApiKey);
+        this.cityList = this.getData();
+        for (var _i = 0, _a = this.cityList; _i < _a.length; _i++) {
+            var city = _a[_i];
+            this.createElement(city);
+        }
+        this.showBtn.addEventListener('click', function () {
+            _this.cityName = document.getElementById("city").value;
+            _this.createElement(_this.cityName);
+            _this.saveData(__spreadArrays(_this.cityList));
+            console.log(_this.getData());
+        });
+        // console.log("Twoja Stara" + this.cityList);
     }
     App.prototype.getCityName = function () {
         return __awaiter(this, void 0, void 0, function () {
             var _this = this;
             return __generator(this, function (_a) {
-                this.cityName = document.getElementById("city");
                 this.showBtn = document.getElementById("showBtn");
+                this.clearBtn = document.getElementById("clearBtn");
+                this.clearBtn.addEventListener("click", function () { return _this.clearStorage(); });
                 this.weatherContainer = document.getElementById("mainElement");
-                this.showBtn.addEventListener("click", function () { return _this.getCityInfo(_this.opwApiKey); });
+                this.weatherList = document.createElement("div");
                 return [2 /*return*/];
             });
         });
     };
-    App.prototype.getCityInfo = function (opwApiKey) {
+    App.prototype.clearStorage = function () {
+        localStorage.clear();
+    };
+    App.prototype.getCityInfo = function (cityName) {
         return __awaiter(this, void 0, Promise, function () {
-            var cityName, openWeatherApi, weatherResponse, weatherData;
+            var openWeatherApi, weatherResponse, weatherData;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        cityName = this.cityName.value;
                         console.log(cityName);
-                        openWeatherApi = "http://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&APPID=" + opwApiKey;
+                        openWeatherApi = "http://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&APPID=" + this.opwApiKey;
                         return [4 /*yield*/, fetch(openWeatherApi)];
                     case 1:
                         weatherResponse = _a.sent();
                         return [4 /*yield*/, weatherResponse.json()];
                     case 2:
                         weatherData = _a.sent();
-                        this.createElement(weatherData, cityName);
                         console.log(weatherData);
                         return [2 /*return*/, weatherData];
                 }
             });
         });
     };
-    App.prototype.createElement = function (weatherData, cityName) {
-        var kelwin = weatherData.main.temp;
-        var celcjusz = kelwin - 273.15;
-        var opis = weatherData.weather[0].icon;
-        console.log(opis);
-        var mainDiv = document.createElement("div");
-        mainDiv.id = "mainDiv";
-        mainDiv.textContent = "Pogoda w " + cityName + ":";
-        var cityDiv = document.createElement("div");
-        cityDiv.id = "cityDiv";
-        cityDiv.textContent = "Temperature: " + celcjusz.toFixed(2) + "°C" + " Country: " + weatherData.sys.country + " Wind: " + weatherData.wind.speed + "km/h" + " Weather: " + weatherData.weather[0].description;
-        var temperatureIcon = document.createElement("img");
-        temperatureIcon.setAttribute("src", "http://openweathermap.org/img/wn/" + opis + "@2x.png");
-        temperatureIcon.setAttribute("width", "100");
-        temperatureIcon.setAttribute("height", "100");
-        temperatureIcon.setAttribute("alt", "icons");
-        cityDiv.appendChild(temperatureIcon);
-        mainDiv.appendChild(cityDiv);
-        document.body.appendChild(mainDiv);
-        this.saveData(weatherData);
+    App.prototype.createElement = function (cityName) {
+        var _this = this;
+        this.getCityInfo(cityName).then(function (data) {
+            if (_this.cityCompare.includes(data.id))
+                return;
+            _this.cityCompare.push(data.id);
+            var kelwin = data.main.temp;
+            var celcjusz = kelwin - 273.15;
+            var opis = data.weather[0].icon;
+            var weatherList = document.createElement("div");
+            weatherList.id = "weatherList";
+            console.log(opis);
+            var mainDiv = document.createElement("div");
+            mainDiv.id = "mainDiv";
+            mainDiv.textContent = "Pogoda w " + cityName + ":";
+            var cityDiv = document.createElement("div");
+            cityDiv.id = "cityDiv";
+            cityDiv.textContent = "Temperature: " + celcjusz.toFixed(2) + "°C" + " Country: " + data.sys.country + " Wind: " + data.wind.speed + "km/h" + " Weather: " + data.weather[0].description;
+            var temperatureIcon = document.createElement("img");
+            temperatureIcon.setAttribute("src", "http://openweathermap.org/img/wn/" + opis + "@2x.png");
+            temperatureIcon.setAttribute("width", "100");
+            temperatureIcon.setAttribute("height", "100");
+            temperatureIcon.setAttribute("alt", "icons");
+            cityDiv.appendChild(temperatureIcon);
+            mainDiv.appendChild(cityDiv);
+            document.body.appendChild(mainDiv);
+            _this.cityList.push(data.name);
+        });
     };
     App.prototype.saveData = function (data) {
-        localStorage.setItem('weatherData,', JSON.stringify(data));
+        localStorage.setItem('weatherData', JSON.stringify(data));
     };
     App.prototype.getData = function () {
         var data = localStorage.getItem('weatherData');
@@ -113,4 +144,3 @@ var App = /** @class */ (function () {
     return App;
 }());
 exports.App = App;
-var app = new App();

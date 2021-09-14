@@ -22,7 +22,6 @@ export class App {
             console.log(this.getData());
 
         });
-        // console.log("Twoja Stara" + this.cityList);
     }
 
     async getCityName() {

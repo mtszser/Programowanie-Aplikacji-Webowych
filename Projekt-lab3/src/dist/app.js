@@ -62,7 +62,6 @@ var App = /** @class */ (function () {
             _this.saveData(__spreadArrays(_this.cityList));
             console.log(_this.getData());
         });
-        // console.log("Twoja Stara" + this.cityList);
     }
     App.prototype.getCityName = function () {
         return __awaiter(this, void 0, void 0, function () {

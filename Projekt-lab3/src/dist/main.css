@@ -14,29 +14,19 @@ header {
   gap: 10px;
 }
 
-#weatherList {
+#mainContainer {
   display: flex;
   flex-direction: row;
-  text-align: center;
+  margin-top: 10px;
   justify-content: center;
-  align-items: center;
   height: auto;
-}
-
-#mainWeather {
-  display: flex;
-  text-align: center;
-  justify-content: center;
   width: auto;
-  height: auto;
 }
 
-.weatherContainer {
+#container {
   display: flex;
-  flex-direction: row;
-  text-align: center;
-  width: 80%;
-  height: 200px;
+  height: 250px;
+  width: auto;
 }
 
 #mainDiv {
@@ -46,15 +36,17 @@ header {
   text-align: center;
   align-items: center;
   height: 200px;
-  width: 350px;
-  padding: 5px;
+  width: 200px;
+  border: solid 2px rgba(0, 0, 0, 0.788);
+  margin-left: 5px;
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 #cityDiv {
   display: flex;
   justify-content: center;
   text-align: center;
-  height: 100px;
+  height: auto;
   width: 50%;
   margin-top: 10px;
 }

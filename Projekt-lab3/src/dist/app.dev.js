@@ -152,6 +152,7 @@ function () {
   function App() {
     this.opwApiKey = '2143d0a80d3b223e32953639018a12c4';
     this.getCityName();
+    this.getCityInfo(this.opwApiKey);
   }
 
   App.prototype.getCityName = function () {
@@ -203,11 +204,16 @@ function () {
   };
 
   App.prototype.createElement = function (weatherData) {
-    var weather = {
-      cityName: String = weatherData.name,
-      cityTemp: Number = weatherData.main.temp
-    };
-    console.log(weather);
+    var mainDiv = document.createElement("div");
+    mainDiv.className = "mainDiv";
+    mainDiv.textContent = "Pogoda w: " + this.cityName.value;
+    var cityDiv = document.createElement("div");
+    cityDiv.className = "cityDiv";
+    cityDiv.textContent = "Temperatura wynosi: " + weatherData.main.temp;
+    +"Kraj: " + weatherData.sys.country + "Prędkość wiatru wynosi: " + weatherData.wind.speed;
+    mainDiv.appendChild(cityDiv);
+    mainDiv.innerHTML;
+    return mainDiv;
   };
 
   return App;

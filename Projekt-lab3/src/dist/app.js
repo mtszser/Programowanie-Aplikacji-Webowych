@@ -57,7 +57,7 @@ var App = /** @class */ (function () {
             this.createElement(city);
         }
         this.showBtn.addEventListener('click', function () {
-            _this.cityName = document.getElementById("city").value;
+            _this.cityName = document.getElementById("city").value.toUpperCase();
             _this.createElement(_this.cityName);
             _this.saveData(__spreadArrays(_this.cityList));
             console.log(_this.getData());
@@ -107,8 +107,6 @@ var App = /** @class */ (function () {
             var kelwin = data.main.temp;
             var celcjusz = kelwin - 273.15;
             var opis = data.weather[0].icon;
-            var weatherList = document.createElement("div");
-            weatherList.id = "weatherList";
             console.log(opis);
             var mainDiv = document.createElement("div");
             mainDiv.id = "mainDiv";
@@ -123,8 +121,10 @@ var App = /** @class */ (function () {
             temperatureIcon.setAttribute("alt", "icons");
             cityDiv.appendChild(temperatureIcon);
             mainDiv.appendChild(cityDiv);
-            weatherList.append(mainDiv);
-            document.body.appendChild(weatherList);
+            var mainContainer = document.getElementById("mainContainer");
+            var container = document.getElementById("container");
+            container.appendChild(mainDiv);
+            mainContainer.appendChild(container);
             _this.cityList.push(data.name);
         });
     };

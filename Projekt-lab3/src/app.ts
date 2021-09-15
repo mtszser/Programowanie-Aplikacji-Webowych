@@ -15,7 +15,7 @@ export class App {
             this.createElement(city);
         }
         this.showBtn.addEventListener('click', () => {
-            this.cityName = (<HTMLInputElement>document.getElementById("city")).value;
+            this.cityName = (<HTMLInputElement>document.getElementById("city")).value.toUpperCase();
             this.createElement(this.cityName);
             this.saveData([...this.cityList]);
             console.log(this.getData());
@@ -54,8 +54,6 @@ export class App {
             const kelwin = data.main.temp;
             const celcjusz = kelwin - 273.15;
             const opis = data.weather[0].icon;
-            const weatherList = document.createElement("div")
-            weatherList.id = "weatherList"
             console.log(opis);
             const mainDiv: HTMLDivElement = document.createElement("div");
             mainDiv.id = "mainDiv"
@@ -69,10 +67,12 @@ export class App {
             temperatureIcon.setAttribute("height", "100");
             temperatureIcon.setAttribute("alt", "icons");
             cityDiv.appendChild(temperatureIcon);
-        mainDiv.appendChild(cityDiv);
-        weatherList.append(mainDiv);
-        document.body.appendChild(weatherList);
-        this.cityList.push(data.name)
+            mainDiv.appendChild(cityDiv);
+            const mainContainer = <HTMLDivElement>document.getElementById("mainContainer");
+            const container = <HTMLDivElement>document.getElementById("container");
+            container.appendChild(mainDiv);
+            mainContainer.appendChild(container);
+            this.cityList.push(data.name)
         }) 
     }
 

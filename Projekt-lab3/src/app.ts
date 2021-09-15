@@ -14,6 +14,11 @@ export class App {
         for (let city of this.cityList) {
             this.createElement(city);
         }
+    }
+    getCityName() {
+        this.showBtn = <HTMLButtonElement>document.getElementById("showBtn");
+        this.clearBtn = <HTMLButtonElement>document.getElementById("clearBtn");
+        this.clearBtn.addEventListener("click", () => this.clearStorage())
         this.showBtn.addEventListener('click', () => {
             this.cityName = (<HTMLInputElement>document.getElementById("city")).value.toUpperCase();
             this.createElement(this.cityName);
@@ -21,13 +26,6 @@ export class App {
             console.log(this.getData());
 
         });
-    }
-
-    async getCityName() {
-        this.showBtn = <HTMLButtonElement>document.getElementById("showBtn");
-        this.clearBtn = <HTMLButtonElement>document.getElementById("clearBtn");
-        this.clearBtn.addEventListener("click", () => this.clearStorage())
-        this.weatherList = <HTMLDivElement>document.createElement("div");
         
         
     }    

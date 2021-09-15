@@ -46,7 +46,6 @@ exports.__esModule = true;
 exports.App = void 0;
 var App = /** @class */ (function () {
     function App() {
-        var _this = this;
         this.opwApiKey = '2143d0a80d3b223e32953639018a12c4';
         this.cityCompare = [];
         this.cityList = [];
@@ -56,23 +55,17 @@ var App = /** @class */ (function () {
             var city = _a[_i];
             this.createElement(city);
         }
+    }
+    App.prototype.getCityName = function () {
+        var _this = this;
+        this.showBtn = document.getElementById("showBtn");
+        this.clearBtn = document.getElementById("clearBtn");
+        this.clearBtn.addEventListener("click", function () { return _this.clearStorage(); });
         this.showBtn.addEventListener('click', function () {
             _this.cityName = document.getElementById("city").value.toUpperCase();
             _this.createElement(_this.cityName);
             _this.saveData(__spreadArrays(_this.cityList));
             console.log(_this.getData());
-        });
-    }
-    App.prototype.getCityName = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var _this = this;
-            return __generator(this, function (_a) {
-                this.showBtn = document.getElementById("showBtn");
-                this.clearBtn = document.getElementById("clearBtn");
-                this.clearBtn.addEventListener("click", function () { return _this.clearStorage(); });
-                this.weatherList = document.createElement("div");
-                return [2 /*return*/];
-            });
         });
     };
     App.prototype.clearStorage = function () {

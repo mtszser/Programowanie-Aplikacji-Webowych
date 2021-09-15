@@ -25,14 +25,14 @@ body {
 .inputContainer > #noteTitle {
   height: 20px;
   width: 60%;
-  text-align: left;
+  text-align: center;
   font-size: 15px;
   padding: 5px;
 }
 .inputContainer > #noteText {
   height: 60px;
   width: 90%;
-  text-align: left;
+  text-align: center;
   font-size: 15px;
   padding: 5px;
 }
@@ -62,7 +62,7 @@ body {
   background-color: white;
 }
 
-.pinnedBox {
+.pinnedDiv {
   display: flex;
   flex-direction: column;
   width: auto;
@@ -70,17 +70,17 @@ body {
   align-items: center;
   background-color: red;
 }
-.pinnedBox > div {
+.pinnedDiv > div {
   width: 100%;
   height: auto;
 }
-.pinnedBox > div > h1 {
+.pinnedDiv > div > h1 {
   text-align: left;
   font-size: 20px;
   margin-left: 20px;
 }
 
-.othersBox {
+.notesDiv {
   display: flex;
   flex-direction: column;
   width: auto;
@@ -88,12 +88,28 @@ body {
   align-items: center;
   background-color: #77777e;
 }
-.othersBox > div {
-  width: 100%;
+.notesDiv > div {
+  display: flex;
+  flex-direction: row;
+  width: auto;
   height: auto;
 }
-.othersBox > div > h1 {
+.notesDiv > h1 {
   text-align: left;
   font-size: 20px;
   margin-left: 20px;
+}
+
+.noteDiv {
+  display: flex;
+  flex-direction: column;
+  border-bottom: solid 1px black;
+}
+.noteDiv > h1 {
+  font-size: 20px;
+}
+.noteDiv > span {
+  font-size: 13px;
+  display: flex;
+  flex-direction: column;
 }

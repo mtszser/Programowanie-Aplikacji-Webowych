@@ -1,36 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Note App</title>
-  </head>
-  <body>
-    <div class="Wrapper">
-        <div class="inputContainer">
-          <input type="text" id="noteTitle" placeholder="Tytuł.."></input>
-          <textarea type="text" id="noteText" placeholder="Tekst.."></textarea>
-          <button id="submitBtn">Utwórz notatkę</button>
-        </div> 
-      </div>
-      <main>
-        <div class="notePanelWrapper">
-          <div class="notePanel">
-            <div class="pinnedBox">
-              <div>
-                <h1>Przypięte:</h1>
-              </div>
-
-              </div>
-              <div class="othersBox">
-                <div>
-              <h1>Inne:</h1>
-            </div>
-
-            </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Note App</title>
+</head>
+<body>
+  <div class="Wrapper">
+    <div class="inputContainer">
+      <input type="text" id="noteTitle" placeholder="Title.." maxlength="15"></input>
+      <textarea type="text" id="noteText" placeholder="Text.." maxlength="66"></textarea>
+      <button id="submitBtn">Create Note</button>
+    </div>
+  </div>
+  <main>
+    <div class="notePanelWrapper">
+      <div class="notePanel">
+        <div class="pinnedDiv">
+          <h1>Pinned:</h1>
+        </div>
+        <div class="notesDiv" id="notesDiv">
+          <div>
+            <h1>Notes:</h1>
           </div>
         </div>
-      </main>
-    <script src="index.js"></script>
-  </body>
+      </div>
+    </div>
+  </main>
+  <script src="index.js"></script>
+</body>
+
 </html>

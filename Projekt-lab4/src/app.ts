@@ -1,42 +1,50 @@
+import  Note from './classes/note'
 export class App {
 
-    titleInput: string;
-    textInput: string;
-    submitBtn: HTMLButtonElement;
-    pinnedBox: HTMLDivElement;
-    othersBox: HTMLDivElement;
-    
+    noteTitle: HTMLInputElement;
+    noteText: HTMLInputElement;
 
+
+    submitBtn: HTMLButtonElement;
+    
+    
+    
+    
+    pinnedBox: HTMLDivElement;
+    notesBox: HTMLDivElement;
+
+
+    notesArray: string[] = [];
+
+
+    notes: HTMLDivElement;
 
     constructor() {
-        this.startNoteApp();
-    }
-
-    startNoteApp(){
         this.getElements();
-        this.btnEvent();
+        this.addEvents()
 
     }
 
-    getElements() {
-        this.pinnedBox = document.getElementById("pinnedBox") as HTMLDivElement;
-        this.othersBox = document.getElementById("othersBox") as HTMLDivElement;
-        this.submitBtn = document.getElementById("submitBtn") as HTMLButtonElement;
-        this.titleInput = (<HTMLInputElement>document.getElementById("noteTitle")).value;
-        this.textInput = (<HTMLTextAreaElement>document.getElementById("noteText")).value;
-        
+    getElements(){
+        this.submitBtn = <HTMLButtonElement>document.getElementById("submitBtn");
+        this.noteTitle = <HTMLInputElement>document.getElementById("noteTitle");
+        this.noteText = <HTMLInputElement>document.getElementById("noteText");
+        this.notesBox = <HTMLDivElement>document.getElementById("notesDiv");
+
+
     }
 
-    btnEvent() {
+    addEvents(){
         this.submitBtn.addEventListener("click", () => this.addNote())
     }
 
     addNote() {
-        console.log(this.titleInput = (<HTMLInputElement>document.getElementById("noteTitle")).value);
-        console.log(this.textInput = (<HTMLTextAreaElement>document.getElementById("noteText")).value);
+        const note = new Note(this.noteTitle.value, this.noteText.value)
+        this.notesBox.appendChild(note.getNote());
 
     }
 
+    printNote() {
 
+    }
 }
-const app = new App();

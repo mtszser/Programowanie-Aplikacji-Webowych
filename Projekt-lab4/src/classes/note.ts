@@ -3,16 +3,18 @@ export default class Note {
     id: number;
     noteTitle: string;
     noteText: string;
+    // date: number;
     pinned: boolean;
     
 
 
     constructor( title: string, text: string, pinned: boolean = false, id?: number) {
-        this.id = 0 + Math.round(Math.random()*1000000);
+        this.id = 0 + Math.round(Math.random()*100);
         this.noteTitle = title;
         this.noteText = text;
+        // this.date = date;
         this.pinned = pinned;
-        console.log(this.id)
+
     }
 
     getNote() {
@@ -35,7 +37,6 @@ export default class Note {
         noteDiv.style.color = '#e8eaed'
 
         return noteDiv;
+        
     }
-
-
 }

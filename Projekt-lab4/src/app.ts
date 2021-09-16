@@ -1,4 +1,5 @@
 import  Note from './classes/note'
+import Localstorage from './storage/localstorage';
 export class App {
 
     noteTitle: HTMLInputElement;
@@ -6,6 +7,7 @@ export class App {
 
 
     submitBtn: HTMLButtonElement;
+    clearBtn: HTMLButtonElement;
     
     
     
@@ -13,20 +15,27 @@ export class App {
     pinnedBox: HTMLDivElement;
     notesBox: HTMLDivElement;
 
+    storage: Localstorage;
 
-    notesArray: string[] = [];
+
+    notesArray: Note[] = [];
 
 
     notes: HTMLDivElement;
 
     constructor() {
-        this.getElements();
-        this.addEvents()
+        this.storage = new Localstorage();
 
+        this.getElements();
+        this.addEvents();
+        this.getData();
+        
     }
+
 
     getElements(){
         this.submitBtn = <HTMLButtonElement>document.getElementById("submitBtn");
+        this.clearBtn = <HTMLButtonElement>document.getElementById("clearNote");
         this.noteTitle = <HTMLInputElement>document.getElementById("noteTitle");
         this.noteText = <HTMLInputElement>document.getElementById("noteText");
         this.notesBox = <HTMLDivElement>document.getElementById("notesDiv");
@@ -36,15 +45,39 @@ export class App {
 
     addEvents(){
         this.submitBtn.addEventListener("click", () => this.addNote())
+        this.clearBtn.addEventListener("click", () => this.clearShiet());
     }
 
     addNote() {
-        const note = new Note(this.noteTitle.value, this.noteText.value)
+        if (this.noteTitle.value.length === 0 && this.noteText.value.length) return;
+        const note = new Note(this.noteTitle.value, this.noteText.value);
         this.notesBox.appendChild(note.getNote());
+        this.notesArray.push(note);
+        console.log(this.notesArray);
+        this.saveData([...this.notesArray]) 
+            
+    }
+
+    clearShiet() {
+        localStorage.clear();
+    }
+
+    saveData(data: any) {
+        localStorage.setItem('notesArray', JSON.stringify(data));
 
     }
 
-    printNote() {
-
+    getData() {
+        const data = localStorage.getItem('notesArray');
+        if(data) {
+            console.log("cośjest");
+            return JSON.parse(data);
+            
+        }
+        else {
+            console.log("nic tu nima");
+            return [];
+        }
     }
+
 }

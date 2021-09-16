@@ -1,5 +1,5 @@
 body {
-  background: #e9faff;
+  background: #222222;
 }
 
 .Wrapper {
@@ -13,7 +13,7 @@ body {
 .inputContainer {
   display: flex;
   flex-direction: column;
-  width: auto;
+  width: 600px;
   height: auto;
   align-items: center;
   justify-content: center;
@@ -24,17 +24,21 @@ body {
 }
 .inputContainer > #noteTitle {
   height: 20px;
-  width: 60%;
+  width: 130px;
   text-align: center;
   font-size: 15px;
   padding: 5px;
 }
 .inputContainer > #noteText {
   height: 60px;
-  width: 90%;
+  width: 200px;
   text-align: center;
   font-size: 15px;
   padding: 5px;
+}
+.inputContainer > #pinned {
+  height: 20px;
+  width: 20px;
 }
 
 .noteInfo {

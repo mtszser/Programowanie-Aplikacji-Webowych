@@ -3,11 +3,11 @@ exports.__esModule = true;
 var Note = /** @class */ (function () {
     function Note(title, text, pinned, id) {
         if (pinned === void 0) { pinned = false; }
-        this.id = 0 + Math.round(Math.random() * 1000000);
+        this.id = 0 + Math.round(Math.random() * 100);
         this.noteTitle = title;
         this.noteText = text;
+        // this.date = date;
         this.pinned = pinned;
-        console.log(this.id);
     }
     Note.prototype.getNote = function () {
         var noteDiv = document.createElement("div");

@@ -23,17 +23,19 @@ var App = /** @class */ (function () {
         this.clearBtn = document.getElementById("clearNote");
         this.noteTitle = document.getElementById("noteTitle");
         this.noteText = document.getElementById("noteText");
-        this.notesBox = document.getElementById("notesDiv");
+        this.notesBox = document.getElementById("notes-Div");
     };
     App.prototype.addEvents = function () {
         var _this = this;
-        this.submitBtn.addEventListener("click", function () { return _this.addNote(); });
+        this.submitBtn.addEventListener("click", function () {
+            return _this.addNote(_this.noteTitle, _this.noteText);
+        });
         this.clearBtn.addEventListener("click", function () { return _this.clearShiet(); });
     };
-    App.prototype.addNote = function () {
-        if (this.noteTitle.value.length === 0 && this.noteText.value.length)
+    App.prototype.addNote = function (noteTitle, noteText) {
+        if (noteTitle.value.length === 0 && noteText.value.length)
             return;
-        var note = new note_1["default"](this.noteTitle.value, this.noteText.value);
+        var note = new note_1["default"](noteTitle.value, noteText.value);
         this.notesBox.appendChild(note.getNote());
         this.notesArray.push(note);
         console.log(this.notesArray);
@@ -43,18 +45,22 @@ var App = /** @class */ (function () {
         localStorage.clear();
     };
     App.prototype.saveData = function (data) {
-        localStorage.setItem('notesArray', JSON.stringify(data));
+        localStorage.setItem("notesArray", JSON.stringify(data));
     };
     App.prototype.getData = function () {
-        var data = localStorage.getItem('notesArray');
+        var data = localStorage.getItem("notesArray");
         if (data) {
             console.log("cośjest");
+            this.showNotes(data);
             return JSON.parse(data);
         }
         else {
             console.log("nic tu nima");
             return [];
         }
+    };
+    App.prototype.showNotes = function (data) {
+        console.log(data);
     };
     return App;
 }());

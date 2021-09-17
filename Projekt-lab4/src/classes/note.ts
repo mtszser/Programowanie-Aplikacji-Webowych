@@ -2,6 +2,7 @@ export default class Note {
   id: number;
   noteTitle: string;
   noteText: string;
+  // color: string;
   // date: number;
   pinned: boolean;
 
@@ -9,14 +10,18 @@ export default class Note {
     title: string,
     text: string,
     pinned: boolean = false,
+    // color: string,
     id?: number
   ) {
     this.id = 0 + Math.round(Math.random() * 100);
     this.noteTitle = title;
     this.noteText = text;
+    // this.color = color;
     // this.date = date;
     this.pinned = pinned;
   }
+
+  pinorNot() {}
 
   getNote() {
     const noteDiv = document.createElement("div");
@@ -24,7 +29,7 @@ export default class Note {
     noteDiv.id = "noteDiv";
 
     noteDiv.innerHTML = `
-        <a onclick="app.pinned('${this.id}')" class="pinClick">
+        <a onclick="pinOrNot()('${this.id}')" class="pinClick">
         <img src="${
           this.pinned ? "./assets/push-pin.svg" : "./assets/push-pin.png"
         }" alt="">

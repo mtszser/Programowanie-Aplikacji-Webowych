@@ -13,10 +13,12 @@ var localstorage_1 = require("./storage/localstorage");
 var App = /** @class */ (function () {
     function App() {
         this.notesArray = [];
+        this.addedNote = "";
         this.storage = new localstorage_1["default"]();
+        this.addedNote = this.getData();
+        console.log(this.addedNote);
         this.getElements();
         this.addEvents();
-        this.getData();
     }
     App.prototype.getElements = function () {
         this.submitBtn = document.getElementById("submitBtn");
@@ -24,6 +26,7 @@ var App = /** @class */ (function () {
         this.noteTitle = document.getElementById("noteTitle");
         this.noteText = document.getElementById("noteText");
         this.notesBox = document.getElementById("notes-Div");
+        this.noteColor = document.getElementById("color");
     };
     App.prototype.addEvents = function () {
         var _this = this;
@@ -33,7 +36,7 @@ var App = /** @class */ (function () {
         this.clearBtn.addEventListener("click", function () { return _this.clearShiet(); });
     };
     App.prototype.addNote = function (noteTitle, noteText) {
-        if (noteTitle.value.length === 0 && noteText.value.length)
+        if (noteTitle.value.length === 0 && noteText.value.length === 0)
             return;
         var note = new note_1["default"](noteTitle.value, noteText.value);
         this.notesBox.appendChild(note.getNote());

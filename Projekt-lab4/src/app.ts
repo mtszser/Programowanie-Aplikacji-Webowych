@@ -7,22 +7,26 @@ export class App {
 
   submitBtn: HTMLButtonElement;
   clearBtn: HTMLButtonElement;
+  noteColor: HTMLInputElement;
 
   pinnedBox: HTMLDivElement;
   notesBox: HTMLDivElement;
+  pinornot: HTMLInputElement;
 
   storage: Localstorage;
 
   notesArray: Note[] = [];
+  addedNote: string = "";
 
   notes: HTMLDivElement;
 
   constructor() {
     this.storage = new Localstorage();
 
+    this.addedNote = this.getData();
+    console.log(this.addedNote);
     this.getElements();
     this.addEvents();
-    this.getData();
   }
 
   getElements() {
@@ -31,6 +35,7 @@ export class App {
     this.noteTitle = <HTMLInputElement>document.getElementById("noteTitle");
     this.noteText = <HTMLInputElement>document.getElementById("noteText");
     this.notesBox = <HTMLDivElement>document.getElementById("notes-Div");
+    this.noteColor = <HTMLInputElement>document.getElementById("color");
   }
 
   addEvents() {
@@ -41,7 +46,7 @@ export class App {
   }
 
   addNote(noteTitle: any, noteText: any) {
-    if (noteTitle.value.length === 0 && noteText.value.length) return;
+    if (noteTitle.value.length === 0 && noteText.value.length === 0) return;
 
     const note = new Note(noteTitle.value, noteText.value);
     this.notesBox.appendChild(note.getNote());

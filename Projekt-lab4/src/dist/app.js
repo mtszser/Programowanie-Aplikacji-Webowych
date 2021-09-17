@@ -12,13 +12,17 @@ var note_1 = require("./classes/note");
 var localstorage_1 = require("./storage/localstorage");
 var App = /** @class */ (function () {
     function App() {
+        this.noteDiv = "";
+        this.notesArray2 = [];
         this.notesArray = [];
         this.addedNote = "";
         this.storage = new localstorage_1["default"]();
         this.addedNote = this.getData();
+        console.log("addedNote ma w sobie notki");
         console.log(this.addedNote);
         this.getElements();
         this.addEvents();
+        // this.showNotes();
     }
     App.prototype.getElements = function () {
         this.submitBtn = document.getElementById("submitBtn");

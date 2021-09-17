@@ -15,6 +15,7 @@ export class App {
 
   storage: Localstorage;
 
+  noteDiv: any = "";
   notesArray2: string[] = [];
   notesArray: Note[] = [];
   addedNote: string = "";
@@ -29,7 +30,7 @@ export class App {
     console.log(this.addedNote);
     this.getElements();
     this.addEvents();
-    this.showNotes();
+    // this.showNotes();
   }
 
   getElements() {
@@ -77,5 +78,12 @@ export class App {
     }
   }
 
-  showNotes() {}
+  // showNotes() {
+  //   let data: any = localStorage.getItem("notesArray");
+  //   let ObjData = JSON.parse(data);
+  //   console.log(ObjData);
+  //   for (let i = 0; i < ObjData.length; i++) {
+  //     this.addNote(ObjData[i].noteTitle, ObjData[i].noteText);
+  //   }
+  // }
 }

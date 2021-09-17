@@ -46,7 +46,7 @@ exports.__esModule = true;
 exports.App = void 0;
 var App = /** @class */ (function () {
     function App() {
-        this.opwApiKey = '2143d0a80d3b223e32953639018a12c4';
+        this.opwApiKey = "2143d0a80d3b223e32953639018a12c4";
         this.cityCompare = [];
         this.cityList = [];
         this.getCityName();
@@ -61,9 +61,10 @@ var App = /** @class */ (function () {
         this.showBtn = document.getElementById("showBtn");
         this.clearBtn = document.getElementById("clearBtn");
         this.clearBtn.addEventListener("click", function () { return _this.clearStorage(); });
-        this.showBtn.addEventListener('click', function () {
-            _this.cityName = document.getElementById("city").value.toUpperCase();
+        this.showBtn.addEventListener("click", function () {
+            _this.cityName = (document.getElementById("city")).value.toUpperCase();
             _this.createElement(_this.cityName);
+            // ... - spread syntax (składnia rozwinięcia)
             _this.saveData(__spreadArrays(_this.cityList));
             console.log(_this.getData());
         });
@@ -106,7 +107,17 @@ var App = /** @class */ (function () {
             mainDiv.textContent = "Pogoda w " + cityName + ":";
             var cityDiv = document.createElement("div");
             cityDiv.id = "cityDiv";
-            cityDiv.textContent = "Temperature: " + celcjusz.toFixed(0) + "°C" + " Country: " + data.sys.country + " Wind: " + data.wind.speed + "km/h" + " Weather: " + data.weather[0].description;
+            cityDiv.textContent =
+                "Temperature: " +
+                    celcjusz.toFixed(0) +
+                    "°C" +
+                    " Country: " +
+                    data.sys.country +
+                    " Wind: " +
+                    data.wind.speed +
+                    "km/h" +
+                    " Weather: " +
+                    data.weather[0].description;
             var temperatureIcon = document.createElement("img");
             temperatureIcon.setAttribute("src", "http://openweathermap.org/img/wn/" + opis + "@2x.png");
             temperatureIcon.setAttribute("width", "100");
@@ -114,7 +125,7 @@ var App = /** @class */ (function () {
             temperatureIcon.setAttribute("alt", "icons");
             cityDiv.appendChild(temperatureIcon);
             mainDiv.appendChild(cityDiv);
-            var mainContainer = document.getElementById("mainContainer");
+            var mainContainer = (document.getElementById("mainContainer"));
             var container = document.getElementById("container");
             container.appendChild(mainDiv);
             mainContainer.appendChild(container);
@@ -122,10 +133,10 @@ var App = /** @class */ (function () {
         });
     };
     App.prototype.saveData = function (data) {
-        localStorage.setItem('weatherData', JSON.stringify(data));
+        localStorage.setItem("weatherData", JSON.stringify(data));
     };
     App.prototype.getData = function () {
-        var data = localStorage.getItem('weatherData');
+        var data = localStorage.getItem("weatherData");
         if (data) {
             return JSON.parse(data);
         }

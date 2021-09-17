@@ -137,8 +137,7 @@ body {
   height: 30px;
 }
 .noteDiv > a > img {
-  background-color: #f5a1a1;
-  border: solid rgba(53, 53, 53, 0.699);
+  border: 1px solid rgba(53, 53, 53, 0.699);
   border-radius: 5px;
   cursor: pointer;
   width: 30px;

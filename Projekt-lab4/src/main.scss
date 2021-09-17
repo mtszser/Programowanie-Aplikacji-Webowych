@@ -134,11 +134,9 @@ body {
     width: 30px;
     height: 30px;
     & > img {
-      background-color: rgb(245, 161, 161);
-      border: solid rgba(53, 53, 53, 0.699);
+      border: 1px solid rgba(53, 53, 53, 0.699);
       border-radius: 5px;
       cursor: pointer;
-
       width: 30px;
       height: 30px;
     }

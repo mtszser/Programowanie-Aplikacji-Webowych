@@ -15,6 +15,7 @@ export class App {
 
   storage: Localstorage;
 
+  notesArray2: string[] = [];
   notesArray: Note[] = [];
   addedNote: string = "";
 
@@ -24,9 +25,11 @@ export class App {
     this.storage = new Localstorage();
 
     this.addedNote = this.getData();
+    console.log("addedNote ma w sobie notki");
     console.log(this.addedNote);
     this.getElements();
     this.addEvents();
+    this.showNotes();
   }
 
   getElements() {
@@ -73,4 +76,6 @@ export class App {
       return [];
     }
   }
+
+  showNotes() {}
 }

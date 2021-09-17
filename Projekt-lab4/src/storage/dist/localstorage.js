@@ -7,7 +7,7 @@ var Localstorage = /** @class */ (function () {
         this.localstorage.addNote(note);
     };
     Localstorage.prototype.getNote = function (note) {
-        return this.localstorage.getNote(note);
+        this.localstorage.getNote(note);
     };
     return Localstorage;
 }());

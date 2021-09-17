@@ -51,16 +51,12 @@ var App = /** @class */ (function () {
         var data = localStorage.getItem("notesArray");
         if (data) {
             console.log("cośjest");
-            this.showNotes(data);
             return JSON.parse(data);
         }
         else {
             console.log("nic tu nima");
             return [];
         }
-    };
-    App.prototype.showNotes = function (data) {
-        console.log(data);
     };
     return App;
 }());

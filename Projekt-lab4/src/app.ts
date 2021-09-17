@@ -1,5 +1,6 @@
 import Note from "./classes/note";
 import Localstorage from "./storage/localstorage";
+import appFireStorage from "./storage/AppFireStoreStorage";
 export class App {
   noteTitle: HTMLInputElement;
   noteText: HTMLInputElement;
@@ -61,15 +62,10 @@ export class App {
     const data = localStorage.getItem("notesArray");
     if (data) {
       console.log("cośjest");
-      this.showNotes(data);
       return JSON.parse(data);
     } else {
       console.log("nic tu nima");
       return [];
     }
-  }
-
-  showNotes(data: string) {
-    console.log(data);
   }
 }

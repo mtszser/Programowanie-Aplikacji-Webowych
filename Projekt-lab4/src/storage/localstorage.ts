@@ -6,8 +6,7 @@ export default class Localstorage implements storageConfig {
   addNote(note: Note) {
     this.localstorage.addNote(note);
   }
-
   getNote(note: Note) {
-    return this.localstorage.getNote(note);
+    this.localstorage.getNote(note);
   }
 }
